@@ -12,8 +12,15 @@ public class Funcionario extends Pessoa{
         System.out.println(salario);
     }
 
-    public Funcionario(double salario) {
+    //Se um construtor é criado na classe-pai, a subclasse também deve ter uma; pode-se referenciar os
+    //atributos usados na primeira através do super;
+    public Funcionario(String nome, double salario){
+        super(nome);
         this.salario = salario;
+    };
+
+    public void relatorio(){
+        System.out.println("Foi feito o relatório por " + this.nome + ", que recebe R$" + this.salario);
     }
 
     public double getSalario() {

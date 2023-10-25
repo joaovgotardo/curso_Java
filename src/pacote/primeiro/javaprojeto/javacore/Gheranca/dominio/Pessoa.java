@@ -1,10 +1,19 @@
 package pacote.primeiro.javaprojeto.javacore.Gheranca.dominio;
 
-public class Pessoa {
-    private String nome;
-    private String cpf;
-    private String data_nasc;
-    private Endereco endereco;
+//O object é a classe-pai de todas as classes no Java - todas são um objeto, e por isso, todas são sub-classes
+//Isso acaba por ficar subentendido, então não é preciso estender o Object manualmente
+
+public class Pessoa extends Object{
+    //Através do protected, todas as subclasses de uma classe-pai podem acessar seus atributos
+    //como se eles fossem públicos; isso também pode ser feito em quaisquer classes dentro do mesmo pacote.
+    protected String nome;
+    protected String cpf;
+    protected String data_nasc;
+    protected Endereco endereco;
+
+    public Pessoa(String nome){
+        this.nome = nome;
+    }
 
     public void imprimir(){
         System.out.println(this.nome);
