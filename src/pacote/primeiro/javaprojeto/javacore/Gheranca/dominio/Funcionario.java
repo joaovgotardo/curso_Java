@@ -1,8 +1,16 @@
 package pacote.primeiro.javaprojeto.javacore.Gheranca.dominio;
 
 public class Funcionario extends Pessoa{
+
     //A herança é a extensão das funcionalidades de uma classe;
     private double salario;
+
+    static{
+        System.out.println("Dentro do bloco estático Funcionario");
+    }
+    {
+        System.out.println("Dentro do bloco não estático Funcionario");
+    }
 
     //Um método de mesma assinatura da classe-pai faz com que ela se sobreponha
     //Se for chamada, ela irá usar somente o que está dentro dela
@@ -17,6 +25,7 @@ public class Funcionario extends Pessoa{
     public Funcionario(String nome, double salario){
         super(nome);
         this.salario = salario;
+        System.out.println("EEEEI MAN");
     };
 
     public void relatorio(){

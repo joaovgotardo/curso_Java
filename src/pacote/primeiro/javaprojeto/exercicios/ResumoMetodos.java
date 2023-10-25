@@ -3,7 +3,7 @@ package pacote.primeiro.javaprojeto.exercicios;
 public @interface ResumoMetodos {
     /**
      Uma classe é representada por
-     public class {}, onde dentro estarão os atributos, as características da classe, que são
+     public class {}, onde dentro estarão os atributos, as características da classe, que sã
      representadas por public [tipo de variável], ou seja, String, int, double, etc.
      Outra classe deve referenciar esta, para que ela seja inicializada, através do:
      Classe [nome da variável] = new Classe ();
