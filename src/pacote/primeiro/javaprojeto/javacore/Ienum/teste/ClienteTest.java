@@ -3,7 +3,7 @@ package pacote.primeiro.javaprojeto.javacore.Ienum.teste;
 import pacote.primeiro.javaprojeto.javacore.Ienum.dominio.Cliente1;
 import pacote.primeiro.javaprojeto.javacore.Ienum.dominio.Cliente2;
 import pacote.primeiro.javaprojeto.javacore.Ienum.dominio.TipoCliente;
-import pacote.primeiro.javaprojeto.javacore.Ienum.dominio.Cliente2.TipoPagamento;
+import pacote.primeiro.javaprojeto.javacore.Ienum.dominio.TipoPagamento;
 
 public class ClienteTest {
     public static void main(String[] args) {
@@ -16,13 +16,15 @@ public class ClienteTest {
 
         Cliente2 cliente1 = new Cliente2("Vanderlei", TipoCliente.P_FISICA, TipoPagamento.PIX);
         Cliente2 cliente4 = new Cliente2("André Motorizações", TipoCliente.P_JURIDICA, TipoPagamento.DEBITO);
-//        Cliente2 cliente2 = new Cliente2("Alejandro", TipoCliente.P_FISICA);
+        Cliente2 cliente2 = new Cliente2("Alejandro", TipoCliente.P_FISICA, TipoPagamento.CREDITO);
 //        Cliente2 cliente3 = new Cliente2("Serenata", null);
         //Agora cliente3 é uma exceção (ainda não abordado);
         System.out.println(cliente1);
-//        System.out.println(cliente2);
+        System.out.println(cliente2);
 //        System.out.println(cliente3);
         System.out.println(cliente4);
-
+        System.out.println(TipoPagamento.DEBITO.Desconto(500));
+        System.out.println(TipoPagamento.CREDITO.Desconto(500));
+        System.out.println(TipoPagamento.PIX.Desconto(500));
     }
 }

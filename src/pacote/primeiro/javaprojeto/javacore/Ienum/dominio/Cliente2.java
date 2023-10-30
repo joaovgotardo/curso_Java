@@ -2,11 +2,6 @@ package pacote.primeiro.javaprojeto.javacore.Ienum.dominio;
 
 public class Cliente2 {
     //Pode ser criado uma enumeração dentro da classe;
-    public enum TipoPagamento{
-        CREDITO,
-        DEBITO,
-        PIX;
-    }
 
     private String nome;
     //Será criada uma associação da classe com a enumeração;
@@ -23,7 +18,8 @@ public class Cliente2 {
     public String toString() {
         return "Cliente2{" +
                 "nome='" + nome + '\'' + ", " +
-                "tipoCliente=" + tipoCliente + '\'' + ", " +
+                "tipoCliente=" + tipoCliente.CODIGO + '\'' + ", " +
+                //Quando disso, será impresso também o código do tipo do cliente.
                 "tipoPagamento=" + tipoPagamento + '\'' +
                 '}';
     }

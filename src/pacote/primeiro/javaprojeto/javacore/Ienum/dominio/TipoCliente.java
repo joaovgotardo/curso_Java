@@ -7,8 +7,11 @@ public enum TipoCliente {
     P_JURIDICA(2);
 
     //Pode ser criado um construtor para uma enumeração, que poderá receber atributos.
-    //Variáveis não podem vir antes da enumeração. 
-    private int codigo;
+    //Variáveis não podem vir antes da enumeração.
+    public final int CODIGO; //O static não faria sentido nesse caso, pois ele obrigatoriamente
+    //deveria receber um valor.
+
     TipoCliente(int codigo) {
+        this.CODIGO = codigo;
     }
 }
