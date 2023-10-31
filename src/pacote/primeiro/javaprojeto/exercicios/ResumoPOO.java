@@ -85,6 +85,6 @@ public @interface ResumoPOO {
      mas servem como um modelo das suas subclasses; por exemplo, todas elas podem ser funcionários, mas nenhuma
      é isso unicamente, logo, cada uma tem uma função específica que é explicitada na subclasse.
      Métodos abstratos são usados para obrigar que a subclasse determine um comportamento específico, de forma
-     obrigatório, tanto na própria classe quanto em eventuais subclasses.
+     obrigatória, tanto na própria classe quanto em eventuais subclasses.
      */
 }

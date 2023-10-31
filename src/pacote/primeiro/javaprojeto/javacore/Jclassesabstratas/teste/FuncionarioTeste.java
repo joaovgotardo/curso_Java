@@ -9,5 +9,6 @@ public class FuncionarioTeste {
         CEO ceo = new CEO("Alberto", 25000);
         System.out.println(ceo);
         System.out.println(backenddev);
+        backenddev.cidade();
     }
 }
