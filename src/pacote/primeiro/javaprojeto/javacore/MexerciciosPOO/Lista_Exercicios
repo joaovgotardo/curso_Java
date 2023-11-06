@@ -17,8 +17,7 @@ representa a empresa para adicionar um departamento.
 número X inteiro, também positivo e maior que zero. Faça um programa para:
 (a) ler pelo teclado os valores do vetor;
 (b) ler pelo teclado o número X;
-(c) verificar se o vetor está em ordem crescente, decrescente ou não ordenado;
-(d) dizer quantos números no vetor são maiores que X, menores que X e iguais a X
+(c) dizer quantos números no vetor são maiores que X, menores que X e iguais a X
 
 3 - Crie uma classe para representar uma conta-corrente, com métodos para depositar
 uma quantia, sacar uma quantia e obter o saldo. Para cada saque será debitada também uma
