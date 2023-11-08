@@ -27,22 +27,12 @@ será possível (opcional) informar o valor do saldo da conta.
 4 - Verifique se as componentes de um vetor de 10 componentes lidos pelo teclado
 formam uma progressão aritmética, informando se sim ou se não.
 
-5 - Escreva a classe ConversaoDeUnidadesDeVolume com métodos estáticos para
-conversão das unidades de volume segundo a lista abaixo. Cada conversão deve ser realizada
-por um método que recebe como parâmetro um valor para converter.
-• 1 litro = 1000 centímetros cúbicos
-• 1 metro cúbico = 1000 litros
-• 1 metro cúbico = 35.32 pés cúbicos
-• 1 galão americano = 231 polegadas cúbicas
-• 1 galão americano = 3.785 litros
-Depois crie uma classe Teste para realizar a chamada dos métodos criados.
-
-6 - O volume de uma piscina olímpica é de 1.890 metros cúbicos. Usando a classe
+5 - O volume de uma piscina olímpica é de 1.890 metros cúbicos. Usando a classe
 ConversaoDeUnidadesDeVolume (exercício 5), escreva um programa em Java que mostre qual
 é o volume de uma piscina olímpica em litros, pés cúbicos e centímetros cúbicos. Escreva
 métodos adicionais para a classe ConversaoDeUnidadesDeVolume, se necessário.
 
-7 - Implemente a classe Funcionario com nome, salario e os métodos
+6 - Implemente a classe Funcionario com nome, salario e os métodos
 addAumento(double valor), ganhoAnual() e exibeDados() - imprime os valores do funcionário.
 a. crie a classe Assistente, que também é um funcionário, e que possui um número de
 matrícula (faça os métodos GET e SET). Sobrescreva o método exibeDados().
