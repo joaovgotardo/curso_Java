@@ -41,11 +41,9 @@ Administrativos possuem um turno (dia ou noite) e um adicional noturno, crie as 
 Tecnico e Administrativo e sobrescreva o método ganhoAnual() de ambas as classes
 (Administrativo e Tecnico).
 
-8 - Implemente os diagramas de classe abaixo:
-a.
 b.
 
-9 - Crie uma classe chamada Ingresso que possui um valor em reais e um
+7 - Crie uma classe chamada Ingresso que possui um valor em reais e um
 método imprimeValor().
 a. crie uma classe VIP, que herda Ingresso e possui um valor adicional. Crie um método que
 retorne o valor do ingresso VIP (com o adicional incluído).

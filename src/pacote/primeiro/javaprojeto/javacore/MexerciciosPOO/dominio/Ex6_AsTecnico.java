@@ -1,9 +1,9 @@
 package pacote.primeiro.javaprojeto.javacore.MexerciciosPOO.dominio;
 
-public class Ex_6AsTecnico extends Ex6_Assistente{
-    public Ex_6AsTecnicoTurno turno;
+public class Ex6_AsTecnico extends Ex6_Assistente{
+    public Ex6_AsTecnicoTurno turno;
 
-    public Ex_6AsTecnico(String nome, double salario, int matricula, Ex_6AsTecnicoTurno turno) {
+    public Ex6_AsTecnico(String nome, double salario, int matricula, Ex6_AsTecnicoTurno turno) {
         super(nome, salario, matricula);
         this.turno = turno;
     }
