@@ -11,10 +11,8 @@ public class Ex3_ContaCorrente {
     private int conta_Corrente;
     private double saldo;
     private int operador;
-
     public double deposito;
     public double saque;
-
     public final double TAXA_OPERACAO = 0.005;
 
 //    public Ex3_ContaCorrente(int conta_Corrente, double saldo, int operador){
@@ -39,8 +37,8 @@ public class Ex3_ContaCorrente {
     }
 
     public void Saque_Quantia(){
-        System.out.println("Digite a quantia para saldo: ");
-        saque = a.nextDouble() + a.nextDouble()*TAXA_OPERACAO;
+        System.out.println("Digite a quantia para saque: ");
+        saque = a.nextDouble() + (saque*TAXA_OPERACAO);
         this.saldo = saldo - saque;
     }
 

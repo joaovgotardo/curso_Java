@@ -22,5 +22,10 @@ public class ProdutoTeste3 {
         CalcularTaxa.CalculaTaxa(cm1);
         CalcularTaxa.CalculaTaxa(cl1);
         CalcularTaxa.CalculaTaxa(n);
+
     }
+    //Cast também é um tipo de polimorfismo. Por exemplo:
+    //int a = (short) 7; ou por exemplo,
+    //int x = Integer.parseInt("2"); convertendo uma string em um int.
+    //ou o método .toString.
 }

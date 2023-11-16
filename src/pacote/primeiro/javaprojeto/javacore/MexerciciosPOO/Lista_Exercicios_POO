@@ -27,22 +27,12 @@ será possível (opcional) informar o valor do saldo da conta.
 4 - Verifique se as componentes de um vetor de 10 componentes lidos pelo teclado
 formam uma progressão aritmética, informando se sim ou se não.
 
-5 - Escreva a classe ConversaoDeUnidadesDeVolume com métodos estáticos para
-conversão das unidades de volume segundo a lista abaixo. Cada conversão deve ser realizada
-por um método que recebe como parâmetro um valor para converter.
-• 1 litro = 1000 centímetros cúbicos
-• 1 metro cúbico = 1000 litros
-• 1 metro cúbico = 35.32 pés cúbicos
-• 1 galão americano = 231 polegadas cúbicas
-• 1 galão americano = 3.785 litros
-Depois crie uma classe Teste para realizar a chamada dos métodos criados.
-
-6 - O volume de uma piscina olímpica é de 1.890 metros cúbicos. Usando a classe
+5 - O volume de uma piscina olímpica é de 1.890 metros cúbicos. Usando a classe
 ConversaoDeUnidadesDeVolume (exercício 5), escreva um programa em Java que mostre qual
 é o volume de uma piscina olímpica em litros, pés cúbicos e centímetros cúbicos. Escreva
 métodos adicionais para a classe ConversaoDeUnidadesDeVolume, se necessário.
 
-7 - Implemente a classe Funcionario com nome, salario e os métodos
+6 - Implemente a classe Funcionario com nome, salario e os métodos
 addAumento(double valor), ganhoAnual() e exibeDados() - imprime os valores do funcionário.
 a. crie a classe Assistente, que também é um funcionário, e que possui um número de
 matrícula (faça os métodos GET e SET). Sobrescreva o método exibeDados().
@@ -51,11 +41,7 @@ Administrativos possuem um turno (dia ou noite) e um adicional noturno, crie as 
 Tecnico e Administrativo e sobrescreva o método ganhoAnual() de ambas as classes
 (Administrativo e Tecnico).
 
-8 - Implemente os diagramas de classe abaixo:
-a.
-b.
-
-9 - Crie uma classe chamada Ingresso que possui um valor em reais e um
+7 - Crie uma classe chamada Ingresso que possui um valor em reais e um
 método imprimeValor().
 a. crie uma classe VIP, que herda Ingresso e possui um valor adicional. Crie um método que
 retorne o valor do ingresso VIP (com o adicional incluído).
@@ -66,26 +52,13 @@ acessar e imprimir esta localização) e uma classe CamaroteSuperior, que é mai
 valor adicional). Esta última possui um método para retornar o valor do ingresso. Ambas as
 classes herdam a classe VIP
 
-10 - Crie a classe Imovel, que possui um endereço e um preço.
+8 - Crie a classe Imovel, que possui um endereço e um preço.
 a. crie uma classe Novo, que herda Imovel e possui um adicional no preço. Crie métodos de
 acesso e impressão deste valor adicional.
 b. crie uma classe Velho, que herda Imovel e possui um desconto no preço. Crie métodos de
 acesso e impressão para este desconto.
 
-11 - Crie uma classe de Teste com o método main. Neste método:
-a. crie um assistente administrativo e um técnico. Imprima o número de matrícula e o nome de
-cada um deles.
-b. crie um animal do tipo cachorro e faça-o latir. Crie um gato e faça-o miar. Faça os dois
-animais caminharem.
-c. teste (como quiser) as classes Rica, Pobre e Miseravel.
-d. crie um ingresso. Peça para o usuário digitar 1 para normal e 2 para VIP. Conforme a escolha
-do usuário, diga se o ingresso é do tipo normal ou VIP. Se for VIP, peça para ele digitar 1 para
-camarote superior e 2 para camarote inferior. Conforme a escolha do usuário, diga se que o
-VIP é camarote superior ou inferior. Imprima o valor do ingresso.
-e. crie um imóvel. Peça para o usuário digitar 1 para novo e 2 para velho. Conforme a definição
-do usuário, imprima o valor final do imóvel.
-
-12 - Faça o que pede a questão.
+9 - Faça o que pede a questão.
 a) Crie um projeto interfaces e crie a interface AreaCalculavel com o método
 calculaArea() - sem parâmetros e que retorna um double.
 b) Queremos criar algumas classes que implementam AreaCalculavel:
@@ -96,7 +69,7 @@ c) Crie uma classe de Teste. No método main crie um vetor de 5 posições que
 contém alguns objetos do tipo AreaCalculavel. Logo após, percorra esse vetor
 imprimindo a área de cada objeto.
 
-13 - Nosso banco precisa tributar dinheiro de alguns bens que nossos clientes
+10 - Nosso banco precisa tributar dinheiro de alguns bens que nossos clientes
 possuem. Para isso, vamos criar um sistema para isso.
 a) Crie uma interface Tributavel que possui o método calculaTributos(), que
 retorna um double.
@@ -109,7 +82,7 @@ obterSaldo() que retorna o saldo da conta.
 d) Vamos criar uma classe TestaTributavel com um método main para testar o
 nosso exemplo.
 
-14 - Crie um GerenciadorDeImpostoDeRenda, que recebe todos os tributáveis de uma
+11 - Crie um GerenciadorDeImpostoDeRenda, que recebe todos os tributáveis de uma
 pessoa e soma seus valores e inclua nele um método para devolver seu total. Essa
 classe deve ter um atributo para calcular a soma total dos tributos e um método
 adicionar(Tributavel) que recebe como parâmetro um Tributavel e soma os
@@ -118,29 +91,7 @@ implementam Tributavel e passar como argumento para
 um GerenciadorDeImpostoDeRenda. Repare que você não pode passar qualquer
 tipo de conta para o método adiciona, apenas as que implementam Tributavel.
 
-15 - Identifique	as	classes	e implemente um	programa para a	seguinte especificação:	“O
+12 - Identifique	as	classes	e implemente um	programa para a	seguinte especificação:	“O
 supermercado vende diferentes tipos	de produtos. Cada produto tem um preço e uma quantidade	em estoque.
 Um pedido de um	cliente	é composto de itens, onde cada item especifica o produto que o cliente deseja e a
 respectiva	quantidade.	Esse pedido	pode ser pago em dinheiro, cheque ou cartão.”
-
-16 - Faça um	programa de	agenda telefônica, com as classes Agenda e Contato.
-
-17 - Adicione a funcionalidade de exibição do total de contatos registrados na agenda.
-
-18 - Adicione a funcionalidade de busca por contato na agenda.
-
-19 - Adicione a	funcionalidade	 de	 ordenação	 dos	 contatos	 na	 agenda.
-
-20 - Adicione	 o	 registro	 de	 mais	 de	 um	 telefone	 por contato na	 agenda.
-
-21 - Adicione	o	registro	de	endereço	comercial	e	residencial	por	contato	na	agenda.
-
-22 - Faça um	programa para controle de empréstimo de	 livros, com as	classes	Emprestimo, Livro e	Pessoa.
-
-23 - Faça	 uma	 programa	 para	 representar	a	árvore	genealógica	 de	 uma	 família. Para
-tal, crie uma	classe	Pessoa	que	permita	indicar,	além	de	nome	e	idade,	o	pai	e	a
-mãe.	Tenha	em mente	que	pai	e	mãe	também	são	do	tipo	Pessoa.
-
-24 - Faça	 um	 programa	 que	 calcule	 a	 área	 de	 uma	 figura	 geométrica. Aceite	 quatro
-tipos de figura	geométrica:	quadrado, retângulo, triângulo	e círculo.	Use	herança	e	polimorfismo.
-

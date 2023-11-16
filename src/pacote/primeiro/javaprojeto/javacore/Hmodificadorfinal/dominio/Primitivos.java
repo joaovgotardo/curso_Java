@@ -4,7 +4,7 @@ package pacote.primeiro.javaprojeto.javacore.Hmodificadorfinal.dominio;
 //Isso é útil para evitar que outras subclasses modificam o conteúdo dos métodos.
 public final class Primitivos {
     private String nome;
-    public static final double VELOCIDADE_LIMITE = 250;
+    public final double VELOCIDADE_LIMITE = 250;
     //O modificador final é usado para constantes.
     //A constante, por convenção, é digitada em uppercase e seus espaços separados por underline.
 

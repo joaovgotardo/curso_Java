@@ -1,0 +1,4 @@
+Uma exceção é um fluxo não esperado em um código. Uma exceção e um erro fazem
+parte da classe Throwable no Java.
+Um Error não pode ser consertado. Por exemplo, um OutofMemory Error precisa que o programa
+seja reiniciado para que volte a funcionar.
