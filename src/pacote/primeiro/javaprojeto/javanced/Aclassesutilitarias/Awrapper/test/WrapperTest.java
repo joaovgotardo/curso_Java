@@ -21,5 +21,20 @@ public class WrapperTest {
         List<Integer> list;
         //Também são úteis em threads e pelo uso de métodos, o que não é possível com primitivos.
         //Wrappers devem ser usados apenas se necessários.
+
+        //Autoboxing - O Java transforma de primitivo a wrapper.
+        Integer i = 25;
+        Long l = 1551L;
+        Double dd = 2415.4;
+        Float ff = 5.515F;
+
+        int iad = i; //Unboxing - Conversão de primitivo/wrapper.
+        Integer int2 = Integer.parseInt("4"); //Também pode-se converter uma string para um inteiro.
+
+        System.out.println(Character.isDigit('7')); //Há também vários métodos para char.
+        System.out.println(Character.isLowerCase('A'));
+        System.out.println(Character.isWhitespace(' '));
+        System.out.println(Character.toLowerCase('B'));
+
     }
 }
