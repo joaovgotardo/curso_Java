@@ -18,7 +18,6 @@ public class SobrescritaExceptionTeste {
         }catch (ErroLoginException | FileNotFoundException e){
             e.printStackTrace();
         }
-
         //Se forem adicionadas outros throws, a própria classe que o fez deve tratar isso.
     }
 }
