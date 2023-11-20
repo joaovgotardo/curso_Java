@@ -9,7 +9,7 @@ public class StringPerfomanceTest {
         System.out.println(tf - ti); //Para ver o tempo gasto para execução.
         //A performance das Strings vai demorando mais de acordo com seu tamanho;
         //1000ch: Com String: 21ms. Com Stringbuilder: 4ms.
-        //20000ch: Com String: +3000ms. Com Stringbuilder: 18ms. (?)
+        //20000ch: Com String: +3000ms. Com Stringbuilder: 18ms.
         //100000ch: String: Não terminado. Stringbuilder: 137ms.
 
         long ti2 = System.currentTimeMillis();
