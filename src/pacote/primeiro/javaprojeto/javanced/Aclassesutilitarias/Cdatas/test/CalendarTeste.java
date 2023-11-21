@@ -1,4 +1,4 @@
-package pacote.primeiro.javaprojeto.javanced.Aclassesutilitarias.Cdatas_formatacao.test;
+package pacote.primeiro.javaprojeto.javanced.Aclassesutilitarias.Cdatas.test;
 
 import java.util.Calendar;
 import java.util.Date;
