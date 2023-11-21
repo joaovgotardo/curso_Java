@@ -1,4 +1,4 @@
-package pacote.primeiro.javaprojeto.javanced.Aclassesutilitarias.Cdatas_formatacao.test;
+package pacote.primeiro.javaprojeto.javanced.Aclassesutilitarias.D_formatacao.test;
 
 import java.text.NumberFormat;
 import java.util.Locale;
