@@ -28,6 +28,6 @@ public class PatternMatcherTeste5 {
         //Outros metacaracteres (anchors):
         //^ pega os caracteres do início da linha. Também funciona como negação:
         //[^abc] Pega todo caracter que não for um desses.
-        // regexr.com
+        //regexr.com
     }
 }
