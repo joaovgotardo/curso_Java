@@ -39,6 +39,16 @@ public class Computador {
         return serial == null ? 1 : this.serial.hashCode();
     }
 
+    //O toString é necessário para que a impressão dele seja o do valor, e não posição de memória.
+    @Override
+    public String toString() {
+        return "Computador{" +
+                "serial='" + serial + '\'' +
+                ", marca='" + marca + '\'' +
+                ", ram_cap=" + ram_cap +
+                '}';
+    }
+
     public String getSerial() {
         return serial;
     }

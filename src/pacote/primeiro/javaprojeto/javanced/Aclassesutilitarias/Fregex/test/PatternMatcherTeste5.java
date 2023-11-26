@@ -10,8 +10,8 @@ public class PatternMatcherTeste5 {
         // começa por uma letra minúscula. Não pode ter caracteres especiais.
         // Deve ser seguido por um @. Tem que seguir com um desses e-mails:
         // hotmail ou gmail. E após deve ter apenas .com.
-//        String regex = "0[xX]([0-9A-Fa-f])+(\\s|$)";
-        String regex = "[a-z][(A-Za-z0-9\\._)]+@(hotmail|gmail)\\.com";
+//        String regex = "0[xX]([0-9A-Fa-f])+(\\s|$)";+
+        String regex = "[a-z][(A-Za-z0-9\\._)]@(hotmail|gmail)\\.com";
         String texto = "pRIMEIRO@gmail.com, segundo@hotmail.com, $!$!terceiromail.br," +
                 "410quarto@email.com.br, quI.nTo80@gmail.com, sexto010=@gmail.com, " +
                 "sEtimo1490@gmail";
