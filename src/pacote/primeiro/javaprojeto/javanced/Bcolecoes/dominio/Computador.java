@@ -25,7 +25,6 @@ public class Computador {
         return serial != null && serial.equals(computador.serial); //Se serial não é nulo, serial é igual ao serial do obj.
     }
 
-
     //HashCode é como um código associado a um valor em um array por exemplo, para procurá-lo
     //mais facilmente. Uma coleção tem em seus elementos hashs associados à eles.
     //Se dois valores têm o mesmo hash, o Java retorna o valor corresponde pelo equals.
