@@ -6,6 +6,7 @@ public class Manga implements Comparable<Manga> {
     //Para esse método poder ter seus elementos sortidos, deve implementar o comparable.
     private Long id;
     private String nome;
+    private int quantidade;
 
     public Manga(Long id, String nome) {
         //Pode-se evitar o valor nulo de um atributo através do Objects
@@ -15,11 +16,17 @@ public class Manga implements Comparable<Manga> {
         this.nome = nome;
     }
 
+    public Manga(Long id, String nome, int quantidade) {
+        this(id, nome);
+        this.quantidade = quantidade;
+    }
+
     @Override
     public String toString() {
         return "Manga{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", quantidade=" + quantidade +
                 '}';
     }
 
@@ -70,5 +77,13 @@ public class Manga implements Comparable<Manga> {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 }
