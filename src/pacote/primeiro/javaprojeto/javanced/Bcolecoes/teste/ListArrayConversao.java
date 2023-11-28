@@ -2,11 +2,13 @@ package pacote.primeiro.javaprojeto.javanced.Bcolecoes.teste;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ListArrayConversao {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
+        //Por uma questão de performance, o LinkedList é melhor para remoções frequentes que o ArrayList.
+        List<Integer> list = new LinkedList<>();
         list.add(2);
         list.add(4);
         list.add(6);
