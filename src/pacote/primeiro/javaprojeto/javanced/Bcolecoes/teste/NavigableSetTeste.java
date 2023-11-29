@@ -58,6 +58,7 @@ public class NavigableSetTeste {
         System.out.println(nsm.floor(hai));
         System.out.println(nsm.higher(hai));
         System.out.println(nsm.ceiling(hai));
+
         //Também há o pollFirst e o pollLast, que removem o primeiro ou o último elemento da coleção.
     }
 }
