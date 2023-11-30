@@ -13,4 +13,8 @@ public class Moto {
                 "moto='" + moto + '\'' +
                 '}';
     }
+
+    public String getNome(){
+        return moto;
+    }
 }
