@@ -18,7 +18,7 @@ public class ComportamentoParametroTeste3 {
         List<Carro> carrosAnoAntigo = filtro(list, carro -> carro.getAno() < 2016);
         System.out.println(carrosBrancos);
         System.out.println(carrosAnoAntigo);
-        //A vantagem da do filtro ser ainda mais genérico, é que isso pode acontecer:
+        //A vantagem do filtro ser ainda mais genérico, é que isso pode acontecer:
         List<Integer> nums = List.of(1, 2, 3, 4, 5, 6, 7, 8);
         System.out.println(filtro(nums, pares -> pares*2 == 8));
     }
