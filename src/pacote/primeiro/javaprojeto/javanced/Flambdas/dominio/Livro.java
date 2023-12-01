@@ -2,18 +2,19 @@ package pacote.primeiro.javaprojeto.javanced.Flambdas.dominio;
 
 public class Livro {
     private String nome;
-    private Double preco;
+    private int paginas;
+    //Refatorar: shift f6
 
-    public Livro(String nome, Double preco) {
+    public Livro(String nome, int paginas) {
         this.nome = nome;
-        this.preco = preco;
+        this.paginas = paginas;
     }
 
     @Override
     public String toString() {
         return "Livro{" +
                 "nome='" + nome + '\'' +
-                ", preco=" + preco +
+                ", paginas=" + paginas +
                 '}';
     }
 
@@ -21,7 +22,7 @@ public class Livro {
         return nome;
     }
 
-    public Double getPreco() {
-        return preco;
+    public int getPaginas() {
+        return paginas;
     }
 }
