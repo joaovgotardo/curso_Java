@@ -1,6 +1,6 @@
-package pacote.primeiro.javaprojeto.javanced.Ithreads.servico;
+package pacote.primeiro.javaprojeto.javanced.Jconcorrencia.servico;
 
-import pacote.primeiro.javaprojeto.javanced.Ithreads.dominio.Membros;
+import pacote.primeiro.javaprojeto.javanced.Jconcorrencia.dominio.Membros;
 
 public class EntregaEmail implements Runnable {
     //Classe para enviar e-mails.

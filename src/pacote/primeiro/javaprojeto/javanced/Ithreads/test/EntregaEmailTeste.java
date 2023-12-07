@@ -1,5 +1,6 @@
-package pacote.primeiro.javaprojeto.javanced.Ithreads.dominio;
+package pacote.primeiro.javaprojeto.javanced.Ithreads.test;
 
+import pacote.primeiro.javaprojeto.javanced.Ithreads.dominio.Membros;
 import pacote.primeiro.javaprojeto.javanced.Ithreads.servico.EntregaEmail;
 
 import javax.swing.*;
