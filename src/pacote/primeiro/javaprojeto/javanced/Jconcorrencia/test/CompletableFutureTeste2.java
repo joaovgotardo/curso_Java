@@ -1,5 +1,7 @@
 package pacote.primeiro.javaprojeto.javanced.Jconcorrencia.test;
 
+import pacote.primeiro.javaprojeto.javanced.Jconcorrencia.dominio.Desconto;
+import pacote.primeiro.javaprojeto.javanced.Jconcorrencia.dominio.Orcamento;
 import pacote.primeiro.javaprojeto.javanced.Jconcorrencia.servico.ServicoLoja;
 
 import java.util.List;
