@@ -38,9 +38,5 @@ public class CompletableFutureTeste5 {
 
         //Há também o anyOf, que será completado quando um dos CompletableFutures ser finalizado.
         //O allOf, só se todos forem.
-
-        comfuts.stream()
-                .map(CompletableFuture::join)
-                .forEach(System.out::println);
     }
 }
