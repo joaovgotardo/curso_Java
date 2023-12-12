@@ -33,6 +33,10 @@ public class Pessoa {
         private String email;
         //Quando um setter é criado, ele é void. No builder, o próprio builder é retornado.
 
+        public static Pessoa.PessoaBuilder builder() {
+            return new Pessoa.PessoaBuilder();
+        }
+
         public PessoaBuilder nome(String nome){
             this.nome = nome;
             return this;
@@ -59,4 +63,13 @@ public class Pessoa {
         }
     }
     //Podem-se instalar plug-ins dentro do Intellij para criação automática do Builder.
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
 }
