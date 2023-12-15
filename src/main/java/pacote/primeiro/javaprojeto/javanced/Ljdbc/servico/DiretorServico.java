@@ -3,6 +3,8 @@ package pacote.primeiro.javaprojeto.javanced.Ljdbc.servico;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.dominio.Diretor;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.repositorio.DiretorRepositorio;
 
+import java.util.List;
+
 public class DiretorServico {
     //Adiciona mais uma camada, se eventuais mudanças em outras partes do código ocorrerem.
     public static void salvar(Diretor diretor){
@@ -17,6 +19,14 @@ public class DiretorServico {
     public static void atualizar(Diretor diretor){
         verificarId(diretor.getId());
         DiretorRepositorio.atualizar(diretor);
+    }
+
+    public static List<Diretor> buscarTodos(){
+        return DiretorRepositorio.buscarTodos();
+    }
+
+    public static List<Diretor> buscaPorNome(String nome){
+        return DiretorRepositorio.buscaPorNome(nome);
     }
 
     public static void verificarId(Integer id){

@@ -13,7 +13,7 @@ public class ConexaoFactory {
         String url = "jdbc:mysql://localhost:3306/filme_streaming"; //jdbc:vendor
         //Possibilita a conexão através do Driver Manager.
         String username = "root"; //userusernamename
-        String password = "";
+        String password = "Extra1234!";
         try {
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {

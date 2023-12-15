@@ -1,10 +1,14 @@
 package pacote.primeiro.javaprojeto.javanced.Ljdbc.teste;
 
+import lombok.extern.log4j.Log4j2;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.conn.ConexaoFactory;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.dominio.Diretor;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.repositorio.DiretorRepositorio;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.servico.DiretorServico;
 
+import java.util.List;
+
+@Log4j2
 public class ConexaoFactoryTeste {
     public static void main(String[] args) {
 //        Diretor diretor = Diretor.DiretorBuilder.builder().nome("Andrei Tarkovski").build();
@@ -18,7 +22,10 @@ public class ConexaoFactoryTeste {
 //        DiretorServico.deletar(5);
 //        DiretorServico.deletar(6);
 
-        Diretor diretor = Diretor.builder().id(1).nome("Ingmar Bergman").build();
-        DiretorServico.atualizar(diretor);
+//        Diretor diretor = Diretor.builder().id(1).nome("Ingmar Bergman").build();
+//        DiretorServico.atualizar(diretor);
+        List<Diretor> diretors = DiretorServico.buscarTodos();
+        log.info(diretors);
+        DiretorServico.buscaPorNome("Ingmar");
     }
 }

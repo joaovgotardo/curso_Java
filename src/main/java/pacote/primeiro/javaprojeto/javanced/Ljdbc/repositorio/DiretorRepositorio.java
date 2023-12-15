@@ -4,8 +4,11 @@ import lombok.extern.log4j.Log4j2;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.conn.ConexaoFactory;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.dominio.Diretor;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log4j2 //Usado para substituir o sout, sendo de melhor performance e fornecendo mais dados.
 public class DiretorRepositorio {
@@ -51,5 +54,34 @@ public class DiretorRepositorio {
         }catch(SQLException e){
             log.info("Exceção ocorreu para {}", diretor.getId(), e);
         }
+    }
+
+    //O findAll geralmente não é feito em bancos de dados reais, em fase de produção.
+    public static List<Diretor> buscarTodos(){
+        log.info("Buscando produtores");
+        return buscaPorNome("");
+        //Feito para economizar código.
+    }
+
+    public static List<Diretor> buscaPorNome(String nome){
+        log.info("Buscando por Nome");
+        String sql = "SELECT * FROM filme_streaming where name like '%%%s%%';";
+        List<Diretor> diretores = new ArrayList<>(); //Virará um objeto dentro do Java.
+        try(Connection con = ConexaoFactory.getConnection();
+            Statement smt = con.createStatement();
+            ResultSet rs = smt.executeQuery(sql) //O RS precisa de um statement.
+        ){
+            while(rs.next()){
+                Diretor diretor = Diretor
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .nome(rs.getString("nome"))
+                        .build();
+                diretores.add(diretor);
+            }
+        }catch(SQLException e){
+            log.info("Exceção ocorreu ao tentar buscar", e);
+        }
+        return diretores;
     }
 }
