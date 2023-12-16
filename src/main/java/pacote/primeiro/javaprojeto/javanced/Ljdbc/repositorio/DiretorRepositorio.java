@@ -3,10 +3,8 @@ package pacote.primeiro.javaprojeto.javanced.Ljdbc.repositorio;
 import lombok.extern.log4j.Log4j2;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.conn.ConexaoFactory;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.dominio.Diretor;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +63,7 @@ public class DiretorRepositorio {
 
     public static List<Diretor> buscaPorNome(String nome){
         log.info("Buscando por Nome");
-        String sql = "SELECT * FROM filme_streaming where name like '%%%s%%';";
+        String sql = "SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';";
         List<Diretor> diretores = new ArrayList<>(); //Virará um objeto dentro do Java.
         try(Connection con = ConexaoFactory.getConnection();
             Statement smt = con.createStatement();
@@ -83,5 +81,56 @@ public class DiretorRepositorio {
             log.info("Exceção ocorreu ao tentar buscar", e);
         }
         return diretores;
+    }
+
+    public static void mostrarMetadadosDiretor(){
+        log.info("Mostrando metadados do diretor.");
+        String sql = "SELECT * FROM filme_streaming.diretor";
+        try(Connection con = ConexaoFactory.getConnection();
+            Statement smt = con.createStatement();
+            ResultSet rs = smt.executeQuery(sql)){
+            ResultSetMetaData rsmd = rs.getMetaData(); //Pega os metadados (inclui número, tipo e propriedades.)
+            int columnCount = rsmd.getColumnCount();
+            log.info("Quantidade de colunas: {}", columnCount);
+            for (int i = 0; i < columnCount; i++) {
+                log.info("Nome da coluna: {}", rsmd.getColumnName(i));
+                log.info("Nome da tabela: {}", rsmd.getTableName(i));
+                log.info("Tipo da coluna: {}", rsmd.getColumnType(i));
+            }
+        }catch(SQLException e){
+            log.info("Exceção ocorreu ao tentar buscar", e);
+        }
+    }
+
+    public static void mostrarMetadadosDriver(){
+        //Para mostrar os metadados do driver, precisa-apenas do try with resources.
+        try(Connection con = ConexaoFactory.getConnection()){
+            DatabaseMetaData dbmd = con.getMetaData();
+            //TYPE_FORWARD_ONLY - Indica o tipo para um objeto ResultSet no qual o cursor só pode se mover adiante.
+            if(dbmd.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)){
+                log.info("Suporta TYPE_FORWARD_ONLY");
+                //Se o banco suporta o tipo de concorrência em conjunto com o tipo de set.
+                if(dbmd.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)){
+                    log.info("Suporta CONCUR_UPDATABLE");
+                }
+            }
+            //Scroll_Insensitive - Suporta navegação debaixo para cima. Não atualiza dados em tempo real.
+            if(dbmd.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)){
+                log.info("Suporta TYPE_SCROLL_INSENSITIVE");
+                if(dbmd.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)){
+                    log.info("Suporta CONCUR_UPDATABLE");
+                }
+            }
+
+            //Atualiza em tempo real. Poucos drivers suportam Scroll_Sensitive.
+            if(dbmd.supportsResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE)){
+                log.info("Suporta TYPE_FORWARD_ONLY");
+                if(dbmd.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)){
+                    log.info("Suporta CONCUR_UPDATABLE");
+                }
+            }
+        }catch(SQLException e){
+            log.info("Exceção ocorreu ao tentar buscar", e);
+        }
     }
 }

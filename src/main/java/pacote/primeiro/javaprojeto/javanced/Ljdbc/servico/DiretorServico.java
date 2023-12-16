@@ -29,6 +29,15 @@ public class DiretorServico {
         return DiretorRepositorio.buscaPorNome(nome);
     }
 
+    public static void mostrarMetadadosDiretor(){
+        DiretorRepositorio.mostrarMetadadosDiretor();
+    }
+
+    public static void mostrarMetadadosDriver(){
+        DiretorRepositorio.mostrarMetadadosDriver();
+    }
+
+
     public static void verificarId(Integer id){
         if(id == null || id <= 0){
             throw new IllegalArgumentException("Id inválido.");

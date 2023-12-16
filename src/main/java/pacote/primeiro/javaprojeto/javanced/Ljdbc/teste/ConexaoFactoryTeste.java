@@ -17,15 +17,21 @@ public class ConexaoFactoryTeste {
 //        Diretor diretor = Diretor.builder().nome("Stanley Kubrick").build();
 //        Diretor diretor2 = Diretor.builder().nome("Stanley Kubrick").build();
 //        Diretor diretor3 = Diretor.builder().nome("Stanley Kubrick").build();
-
+//
 //        DiretorServico.deletar(4); //Deletando.
 //        DiretorServico.deletar(5);
 //        DiretorServico.deletar(6);
-
+//
 //        Diretor diretor = Diretor.builder().id(1).nome("Ingmar Bergman").build();
 //        DiretorServico.atualizar(diretor);
-        List<Diretor> diretors = DiretorServico.buscarTodos();
-        log.info(diretors);
-        DiretorServico.buscaPorNome("Ingmar");
+
+//        List<Diretor> diretors = DiretorServico.buscarTodos();
+//        log.info(diretors);
+
+//        DiretorServico.buscaPorNome("Ingmar");
+
+//        DiretorServico.mostrarMetadadosDiretor();
+        DiretorServico.mostrarMetadadosDriver();
+
     }
 }
