@@ -37,6 +37,21 @@ public class DiretorServico {
         DiretorRepositorio.mostrarMetadadosDriver();
     }
 
+    public static void mostrarTipoScroll(){
+        DiretorRepositorio.mostrarTipoScroll();
+    }
+
+    public static List<Diretor> buscaPorNomeParaLowercase(String nome){
+        return DiretorRepositorio.buscaPorNomeParaLowercase(nome);
+    }
+
+    public static List<Diretor> buscaPorNomeInserir(String nome){
+        return DiretorRepositorio.buscaPorNomeInserir(nome);
+    }
+
+    public static void buscaPorNomeDeletar(String nome){
+        DiretorRepositorio.buscaPorNomeDeletar(nome);
+    }
 
     public static void verificarId(Integer id){
         if(id == null || id <= 0){

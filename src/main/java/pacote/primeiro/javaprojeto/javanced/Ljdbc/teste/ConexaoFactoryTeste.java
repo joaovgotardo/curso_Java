@@ -31,7 +31,16 @@ public class ConexaoFactoryTeste {
 //        DiretorServico.buscaPorNome("Ingmar");
 
 //        DiretorServico.mostrarMetadadosDiretor();
+
         DiretorServico.mostrarMetadadosDriver();
+
+        DiretorServico.mostrarTipoScroll();
+
+        DiretorServico.buscaPorNomeParaLowercase("Akira");
+
+        DiretorServico.buscaPorNomeInserir("Christopher Nolan");
+
+        DiretorServico.buscaPorNomeDeletar("Christopher Nolan");
 
     }
 }
