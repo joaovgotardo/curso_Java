@@ -63,7 +63,8 @@ public class DiretorRepositorio {
 
     public static List<Diretor> buscaPorNome(String nome) {
         log.info("Buscando por Nome");
-        String sql = "SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';";
+        String sql = String.format("SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';",
+                nome);
         List<Diretor> diretores = new ArrayList<>(); //Virará um objeto dentro do Java.
         try (Connection con = ConexaoFactory.getConnection();
              Statement smt = con.createStatement();
@@ -159,7 +160,8 @@ public class DiretorRepositorio {
 
     public static List<Diretor> buscaPorNomeParaLowercase(String nome) {
         log.info("Buscando por Nome");
-        String sql = "SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';";
+        String sql = String.format("SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';",
+                nome);
         List<Diretor> diretores = new ArrayList<>();
         //O Statement usado deve utilizar um ResultSet pois executará uma atualização no banco.
         try (Connection con = ConexaoFactory.getConnection();
@@ -184,10 +186,11 @@ public class DiretorRepositorio {
 
     public static List<Diretor> buscaPorNomeInserir(String nome) {
         log.info("Buscando por Nome");
-        String sql = "SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';";
+        String sql = String.format("SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';",
+                nome);
         List<Diretor> diretores = new ArrayList<>();
         try (Connection con = ConexaoFactory.getConnection();
-             Statement smt = con.createStatement();
+             Statement smt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
              ResultSet rs = smt.executeQuery(sql) //O RS precisa de um statement.
         ) {
             if (rs.next()) return diretores;
@@ -212,10 +215,11 @@ public class DiretorRepositorio {
     public static List<Diretor> buscaPorNomeDeletar(String nome) {
         //Esse método deletará por nome e não por id.
         log.info("Buscando por Nome");
-        String sql = "SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';";
+        String sql = String.format("SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';",
+                nome);
         List<Diretor> diretores = new ArrayList<>();
         try (Connection con = ConexaoFactory.getConnection();
-             Statement smt = con.createStatement();
+             Statement smt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
              ResultSet rs = smt.executeQuery(sql)
         ) {
             while (rs.next()) {
@@ -227,4 +231,59 @@ public class DiretorRepositorio {
         return diretores;
     }
 
+    //PreparedStatement - É um statement onde a performance vai ser maior. Ele agiliza o
+    //processo de query fazendo várias verificações que seriam feitas pelo banco de dados,
+    // dentro da aplicação.
+    public static List<Diretor> buscaPorNomePreparedSt(String nome) {
+        log.info("Buscando por Nome");
+        List<Diretor> diretores = new ArrayList<>();
+        try (Connection con = ConexaoFactory.getConnection();
+             PreparedStatement pst = PreparedStatementPorNome(con, nome);
+             ResultSet rs = pst.executeQuery();
+             //O ResultSet só está dentro do try with resources pois o setString já foi feito
+             //dentro do méotdo criarPreparedStatement.
+        ) {
+            while (rs.next()) {
+                Diretor diretor = Diretor
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .nome(rs.getString("nome"))
+                        .build();
+                diretores.add(diretor);
+            }
+        } catch (SQLException e) {
+            log.info("Exceção ocorreu ao tentar buscar", e);
+        }
+        return diretores;
+    }
+
+    private static PreparedStatement PreparedStatementPorNome(Connection con, String nome) throws SQLException{
+        String sql = "SELECT * FROM filme_streaming.diretor where nome like ?;";
+        //O ? é um wildcard. Antes da query ser executada, ele deve ser substituído.
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, nome);
+        //Para utilizar o like, deve-se concatenar, como abaixo:
+//        pst.setString(1, String.format("%%%s%%", nome));
+        return pst;
+    }
+
+    public static void atualizarPreparedStatement(Diretor diretor) {
+        try (Connection con = ConexaoFactory.getConnection();
+             PreparedStatement smt = PreparedStatementAtualizar(con, diretor)) {
+            int i = smt.executeUpdate();
+            log.info("Colunas afetadas: {}, após atualização de {}", i, diretor.getId());
+        } catch (SQLException e) {
+            log.info("Exceção ocorreu para {}", diretor.getId(), e);
+        }
+    }
+
+    private static PreparedStatement PreparedStatementAtualizar(Connection con, Diretor diretor) throws SQLException {
+        String sql = String.format(
+                "UPDATE `filme_streaming`.`diretor` SET `nome` = ? WHERE (`id` = ?);");
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, diretor.getNome());
+        pst.setInt(2, diretor.getId());
+//        pst.setString(1, String.format("%%%s%%", nome));
+        return pst;
+    }
 }

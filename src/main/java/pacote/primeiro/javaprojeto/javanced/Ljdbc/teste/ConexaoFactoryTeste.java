@@ -22,7 +22,7 @@ public class ConexaoFactoryTeste {
 //        DiretorServico.deletar(5);
 //        DiretorServico.deletar(6);
 //
-//        Diretor diretor = Diretor.builder().id(1).nome("Ingmar Bergman").build();
+        Diretor diretor = Diretor.builder().id(1).nome("Ingmar Bergman").build();
 //        DiretorServico.atualizar(diretor);
 
 //        List<Diretor> diretors = DiretorServico.buscarTodos();
@@ -42,5 +42,12 @@ public class ConexaoFactoryTeste {
 
         DiretorServico.buscaPorNomeDeletar("Christopher Nolan");
 
+        DiretorServico.buscaPorNomePreparedSt("Stanley Kubrick");
+        //Poderia-se ter feito o seguinte:
+        //DiretorServico.buscaPorNomePreparedSt("Stanley Kubrick or X'='X");, que retornaria
+        //todos os dados dentro do banco. O PreparedStatement ajuda a corrigir isso. Ele não
+        //retorna mais tudo, pois não retorna aspas simples.
+
+        DiretorServico.atualizarPreparedStatement(diretor);
     }
 }

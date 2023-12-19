@@ -53,6 +53,14 @@ public class DiretorServico {
         DiretorRepositorio.buscaPorNomeDeletar(nome);
     }
 
+    public static void buscaPorNomePreparedSt (String nome){
+        DiretorRepositorio.buscaPorNomePreparedSt(nome);
+    }
+
+    public static void atualizarPreparedStatement(Diretor diretor){
+        DiretorRepositorio.atualizarPreparedStatement(diretor);
+    }
+
     public static void verificarId(Integer id){
         if(id == null || id <= 0){
             throw new IllegalArgumentException("Id inválido.");
