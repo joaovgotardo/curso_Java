@@ -3,7 +3,9 @@ package pacote.primeiro.javaprojeto.javanced.Ljdbc.repositorio;
 import lombok.extern.log4j.Log4j2;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.conn.ConexaoFactory;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.dominio.Diretor;
+import pacote.primeiro.javaprojeto.javanced.Ljdbc.listener.ARowSetListener;
 
+import javax.sql.rowset.JdbcRowSet;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -286,4 +288,78 @@ public class DiretorRepositorio {
 //        pst.setString(1, String.format("%%%s%%", nome));
         return pst;
     }
+    // o Callable vai executar procedures(que pode ou não retornar um valor) e functions (que deve
+    // retornar um valor).
+
+    public static List<Diretor> buscaPorNomeCallableSt(String nome) {
+        log.info("Buscando por Nome");
+        List<Diretor> diretores = new ArrayList<>();
+        try (Connection con = ConexaoFactory.getConnection();
+             PreparedStatement pst = CallableStatementPorNome(con, nome);
+             ResultSet rs = pst.executeQuery();
+        ) {
+            while (rs.next()) {
+                Diretor diretor = Diretor
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .nome(rs.getString("nome"))
+                        .build();
+                diretores.add(diretor);
+            }
+        } catch (SQLException e) {
+            log.info("Exceção ocorreu ao tentar buscar", e);
+        }
+        return diretores;
+    }
+
+    private static CallableStatement CallableStatementPorNome(Connection con, String nome) throws SQLException{
+        String sql = "CALL `filme_streaming`.`my_procedure`(?);";
+        CallableStatement pst = con.prepareCall(sql);
+        pst.setString(1, nome);
+        return pst;
+    }
+
+    //RowSet - É como o ResultSet, contudo, ele pode ser desconectado do banco de dados, pode ser
+    //serializado, podendo ser enviado via network. O RowSet é um Java Bin, Scrollable e Updatable.
+    public static List<Diretor> buscaPorNomeJdbcRowSet(String nome){
+        String sql = "SELECT * FROM filme_streaming.diretor where nome like ?;";
+        List<Diretor> diretores = new ArrayList<>();
+        try(JdbcRowSet ros = ConexaoFactory.getRowSet()){
+            ros.addRowSetListener(new ARowSetListener());
+            ros.setCommand(sql); //Monta o sql a partir do command.
+            ros.setString(1, String.format("%%%s%%", nome));
+            ros.execute(); //Usado apenas para buscar dados.
+            while(ros.next()){
+                Diretor diretor = Diretor.builder()
+                        .id(ros.getInt("id"))
+                        .nome(ros.getString("nome"))
+                        .build();
+                diretores.add(diretor);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return diretores;
+    }
+
+    public static void atualizarRowSet(Diretor diretor){
+        String sql = String.format("SELECT * FROM filme_streaming.diretor WHERE (`id` = ?);");
+        try(JdbcRowSet ros = ConexaoFactory.getRowSet()){
+            ros.addRowSetListener(new ARowSetListener()); //Cria um novo listener de RowSet.
+            ros.setCommand(sql);
+//            ros.setString(1, diretor.getNome());
+            //RowSet não utiliza update dessa forma, isso resulta em exceção.
+            ros.setInt(1, diretor.getId());
+            ros.execute();
+            if(!ros.next()) return; //Retorna se não houver próximos valores no RowSet.
+            ros.updateString("nome", diretor.toString());
+            ros.updateRow();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        //A vantagem do RowSet sobre o ResultSet, é que ele é updatable através do Listener. Reflete
+        //as mudanças do banco em tempo real.
+    }
+
+    //CacheRowSet
 }

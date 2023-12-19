@@ -22,7 +22,7 @@ public class ConexaoFactoryTeste {
 //        DiretorServico.deletar(5);
 //        DiretorServico.deletar(6);
 //
-        Diretor diretor = Diretor.builder().id(1).nome("Ingmar Bergman").build();
+        Diretor diretor = Diretor.builder().id(1).nome("Luis Buñuel").build();
 //        DiretorServico.atualizar(diretor);
 
 //        List<Diretor> diretors = DiretorServico.buscarTodos();
@@ -32,22 +32,30 @@ public class ConexaoFactoryTeste {
 
 //        DiretorServico.mostrarMetadadosDiretor();
 
-        DiretorServico.mostrarMetadadosDriver();
+//        DiretorServico.mostrarMetadadosDriver();
+//
+//        DiretorServico.mostrarTipoScroll();
+//
+//        DiretorServico.buscaPorNomeParaLowercase("Akira");
+//
+//        DiretorServico.buscaPorNomeInserir("Christopher Nolan");
+//
+//        DiretorServico.buscaPorNomeDeletar("Christopher Nolan");
+//
+//        DiretorServico.buscaPorNomePreparedSt("Stanley Kubrick");
+//        //Poderia-se ter feito o seguinte:
+//        //DiretorServico.buscaPorNomePreparedSt("Stanley Kubrick or X'='X");, que retornaria
+//        //todos os dados dentro do banco. O PreparedStatement ajuda a corrigir isso. Ele não
+//        //retorna mais tudo, pois não retorna aspas simples.
+//
+//        List<Diretor> as = DiretorServico.buscaPorNomeCallableSt("As");
+//        log.info(as);
+//
+//        List<Diretor> buscarowset = DiretorServico.buscaPorNomeRowSet("Stanley");
+//        log.info(buscarowset);
 
-        DiretorServico.mostrarTipoScroll();
-
-        DiretorServico.buscaPorNomeParaLowercase("Akira");
-
-        DiretorServico.buscaPorNomeInserir("Christopher Nolan");
-
-        DiretorServico.buscaPorNomeDeletar("Christopher Nolan");
-
-        DiretorServico.buscaPorNomePreparedSt("Stanley Kubrick");
-        //Poderia-se ter feito o seguinte:
-        //DiretorServico.buscaPorNomePreparedSt("Stanley Kubrick or X'='X");, que retornaria
-        //todos os dados dentro do banco. O PreparedStatement ajuda a corrigir isso. Ele não
-        //retorna mais tudo, pois não retorna aspas simples.
-
-        DiretorServico.atualizarPreparedStatement(diretor);
+        DiretorServico.atualizarRowSet(diretor);
+        List<Diretor> diretors = DiretorServico.buscaPorNomeRowSet("");
+        log.info(diretors);
     }
 }

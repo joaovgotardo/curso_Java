@@ -53,12 +53,24 @@ public class DiretorServico {
         DiretorRepositorio.buscaPorNomeDeletar(nome);
     }
 
-    public static void buscaPorNomePreparedSt (String nome){
-        DiretorRepositorio.buscaPorNomePreparedSt(nome);
+    public static List<Diretor> buscaPorNomePreparedSt (String nome){
+        return DiretorRepositorio.buscaPorNomePreparedSt(nome);
     }
 
     public static void atualizarPreparedStatement(Diretor diretor){
         DiretorRepositorio.atualizarPreparedStatement(diretor);
+    }
+
+    public static List<Diretor> buscaPorNomeCallableSt (String nome){
+        return DiretorRepositorio.buscaPorNomeCallableSt(nome);
+    }
+
+    public static List<Diretor> buscaPorNomeRowSet(String nome){
+        return DiretorRepositorio.buscaPorNomeJdbcRowSet(nome);
+    }
+
+    public static void atualizarRowSet(Diretor diretor){
+        DiretorRepositorio.atualizarRowSet(diretor);
     }
 
     public static void verificarId(Integer id){
