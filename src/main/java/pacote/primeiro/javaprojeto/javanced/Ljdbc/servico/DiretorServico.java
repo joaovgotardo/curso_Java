@@ -73,6 +73,14 @@ public class DiretorServico {
         DiretorRepositorio.atualizarRowSet(diretor);
     }
 
+    public static void atualizarCachedRowSet(Diretor diretor){
+        DiretorRepositorio.atualizarCacheRowSet(diretor);
+    }
+
+    public static void salvarTransacao(List<Diretor> diretores){
+        DiretorRepositorio.salvarTransacao(diretores);
+    }
+
     public static void verificarId(Integer id){
         if(id == null || id <= 0){
             throw new IllegalArgumentException("Id inválido.");

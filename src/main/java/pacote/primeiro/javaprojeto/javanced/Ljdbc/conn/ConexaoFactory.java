@@ -1,5 +1,6 @@
 package pacote.primeiro.javaprojeto.javanced.Ljdbc.conn;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
 import javax.sql.rowset.RowSetProvider;
 import java.sql.Connection;
@@ -34,5 +35,11 @@ public class ConexaoFactory {
         jdbcRowSet.setUsername(username);
         jdbcRowSet.setPassword(password);
         return jdbcRowSet;
+    }
+
+    public static CachedRowSet getCachedRowSet() throws SQLException {
+        //Não é necessário prover url, usuário e senha através de uma conexão CachedRowSet,
+        //pois ela está desconectada deo banco.
+        return RowSetProvider.newFactory().createCachedRowSet();
     }
 }

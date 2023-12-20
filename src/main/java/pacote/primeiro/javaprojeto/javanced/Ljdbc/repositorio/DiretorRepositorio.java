@@ -5,6 +5,7 @@ import pacote.primeiro.javaprojeto.javanced.Ljdbc.conn.ConexaoFactory;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.dominio.Diretor;
 import pacote.primeiro.javaprojeto.javanced.Ljdbc.listener.ARowSetListener;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
 import java.sql.*;
 import java.util.ArrayList;
@@ -214,7 +215,7 @@ public class DiretorRepositorio {
         return diretores;
     }
 
-    public static List<Diretor> buscaPorNomeDeletar(String nome) {
+    public static void buscaPorNomeDeletar(String nome) {
         //Esse método deletará por nome e não por id.
         log.info("Buscando por Nome");
         String sql = String.format("SELECT * FROM filme_streaming.diretor where nome like '%%%s%%';",
@@ -230,7 +231,6 @@ public class DiretorRepositorio {
         } catch (SQLException e) {
             log.info("Exceção ocorreu ao tentar buscar", e);
         }
-        return diretores;
     }
 
     //PreparedStatement - É um statement onde a performance vai ser maior. Ele agiliza o
@@ -343,7 +343,7 @@ public class DiretorRepositorio {
     }
 
     public static void atualizarRowSet(Diretor diretor){
-        String sql = String.format("SELECT * FROM filme_streaming.diretor WHERE (`id` = ?);");
+        String sql = "SELECT * FROM filme_streaming.diretor WHERE (`id` = ?);";
         try(JdbcRowSet ros = ConexaoFactory.getRowSet()){
             ros.addRowSetListener(new ARowSetListener()); //Cria um novo listener de RowSet.
             ros.setCommand(sql);
@@ -361,5 +361,66 @@ public class DiretorRepositorio {
         //as mudanças do banco em tempo real.
     }
 
-    //CacheRowSet
+    //CacheRowSet - Trabalha com os dados desconectados do banco, ou seja, ele trabalha com os
+    //dados dentro da memória.
+    public static void atualizarCacheRowSet(Diretor diretor){
+        String sql = String.format("SELECT * FROM WHERE (`id` = ?);");
+        //filme_streaming.diretor deve ser retirado dessa string, pois ocorreria num erro de sintaxe,
+        //que duplicaria essa chamada.
+
+        try(CachedRowSet crs = ConexaoFactory.getCachedRowSet();
+            Connection cn = ConexaoFactory.getConnection()){
+            cn.setAutoCommit(false);
+            crs.setCommand(sql);
+            crs.setInt(1, diretor.getId());
+            crs.execute(cn);
+            if(!crs.next()) return;
+            crs.updateString("nome", diretor.toString());
+            crs.updateRow();
+            //Como o CacheRowSet está desconectado, qualquer alteração no banco deve ser permitida.
+            crs.acceptChanges();
+            //Um novo erro ocorreria aqui, pois o autocommit = true. O próprio MySQL (Driver), está
+            //realizando esse commit. Foi criada por isso, uma conexão em que autocommit = false.
+
+            //A concorrência é uma das preocupações derivada do uso dessa interface, pois é possível
+            //que hajam conflitos durante sua execução.
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    //Transações (Atomicidade) - Ou tudo é executado, ou nada.
+    public static void salvarTransacao(List<Diretor> diretores) {
+        //Recebe uma lista de diretores, que será inserida no banco de dados. Não será se um
+        //deles tiver algum problema.
+        try (Connection con = ConexaoFactory.getConnection()){
+            con.setAutoCommit(false); //Isso é feito para que os dados nao sejam automaticamente
+            //salvos, antes que todos os restantes tenham sua validade confirmada.
+            preparedStatementSalvarTransacao(con, diretores);
+            con.commit(); //Agora deve ser true para adicionar os dados.
+        } catch (SQLException e) {
+            log.info("Exceção ocorreu ao tentar inserir {}", diretores);
+        }
+    }
+
+    private static void preparedStatementSalvarTransacao(
+            Connection con, List<Diretor> diretores) throws SQLException {
+        String sql = String.format(
+                "INSERT INTO `filme_streaming`.`diretor` (`nome`) VALUES (?);");
+        //Precisam ser criados vários PreparedStatements, por isso, eles devem estar em loop;
+        boolean rollback = false;
+        for (Diretor d: diretores) {
+            try(PreparedStatement pst = con.prepareStatement(sql)){
+                log.info("Inserindo diretor(a) {}", d.getNome());
+                pst.setString(1, d.getNome());
+                //Para cada um dos diretores, cria-se um nome
+                pst.execute();
+            }catch (SQLException e){
+                e.printStackTrace();
+                rollback = true; //O rollback é um método para que nada seja adicionado se
+                //houver exceções, seguindo o padrão de transações.
+            }
+            if(rollback) con.rollback();
+        }
+    }
 }
