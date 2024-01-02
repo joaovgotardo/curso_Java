@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pacote.primeiro.javaprojeto.javanced.Njunit.dominio.Pessoa;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaServicoTest {
@@ -46,5 +48,16 @@ class PessoaServicoTest {
     void isAdulto_RetornaException_Null() {
         Assertions.assertThrows(NullPointerException.class, () -> pessoaServico.isAdulto(null));
         //o assert lança uma exceção nullPointer, para cada pessoa que tenha valor nulo.
+    }
+
+    @Test
+    @DisplayName("Retorna uma lista com os objetos que sejam adultos.")
+    void filtrarMaiores_RetornaLista_SeAdulto(){
+        Pessoa pessoa1 = new Pessoa(14);
+        Pessoa pessoa2 = new Pessoa(18);
+        Pessoa pessoa3 = new Pessoa(23);
+        List<Pessoa> adultos = List.of(pessoa1, pessoa2, pessoa3);
+        //Espera-se nesse teste, que o tamanho da lista de adultos após a filtragem seja igual a 2.
+        Assertions.assertEquals(2, pessoaServico.filtrarMaiores(adultos).size());
     }
 }
