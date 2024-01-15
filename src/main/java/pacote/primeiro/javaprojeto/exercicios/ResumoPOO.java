@@ -3,7 +3,7 @@ package pacote.primeiro.javaprojeto.exercicios;
 public @interface ResumoPOO {
     /**
      Uma classe é representada por
-     public class {}, onde dentro estarão os atributos, as características da classe, que sã
+     public class {}, onde dentro estarão os atributos, as características da classe, que são
      representadas por public [tipo de variável], ou seja, String, int, double, etc.
      Outra classe deve referenciar esta, para que ela seja inicializada, através do:
      Classe [nome da variável] = new Classe ();
@@ -76,6 +76,7 @@ public @interface ResumoPOO {
      Ex: public final Referencia REFERENCIA = new Referencia();
      Isso significa que a referência só poderá ser feita nessa instância;
      Ela em si pode receber outros valores, porém, final Referencia indica que referenciará somente um objeto.
+    Classes com o modificador final não podem ser sobrescritas.
 
      Enumerador: A enumeração é um tipo especial de classe, em que os atributos são constantes, e tipos não
      são usados para declará-los. Métodos podem ser usados na enumeração, geralmente finals, mas não estáticos.
@@ -86,5 +87,12 @@ public @interface ResumoPOO {
      é isso unicamente, logo, cada uma tem uma função específica que é explicitada na subclasse.
      Métodos abstratos são usados para obrigar que a subclasse determine um comportamento específico, de forma
      obrigatória, tanto na própria classe quanto em eventuais subclasses.
+
+     Interfaces: Semelhante às classes abstratas, ela determina um contrato, que deve ser seguido por
+     classes que o implementarem, que vai definir seu comportamento. Por padrão, um método da interface
+     é public abstract. As classes podem implementar várias interfaces ao mesmo tempo.
+
+     Polimorfismo: Usado para referenciar subclasses a partir de suas classes a partir de sua classe-pai.
+     Métodos ou atributos específicos da subclasse não podem ser acessados através desse mecanismo.
      */
 }

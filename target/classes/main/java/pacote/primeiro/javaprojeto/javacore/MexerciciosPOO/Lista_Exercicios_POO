@@ -1,0 +1,97 @@
+1 - Crie uma classe que representa um funcionário, registrando seu nome, salário e data
+de admissão. Em seguida, crie uma classe que represente um departamento de uma empresa,
+registrando o nome e os funcionários que nele trabalham (para isso use um vetor, considere
+um máximo de 100 funcionários). Por fim, crie uma classe que representa uma empresa,
+registrando seu nome, CNPJ e departamentos (considere um máximo de 10 departamentos).
+Faça um programa que:
+a) Crie uma empresa;
+b) Adicione a esta empresa alguns departamentos;
+c) Adicione aos departamentos alguns funcionários;
+d) Dê aumento de 10% a todos os funcionários de um determinado departamento;
+É esperado que seu código seja bem encapsulado. Por exemplo, para adicionar um
+departamento em uma empresa (ou um funcionário a um departamento), não se deve acessar
+o vetor (ou lista) de departamentos diretamente, mas sim ter um método na classe que
+representa a empresa para adicionar um departamento.
+
+2 - Considere um vetor de 10 números inteiros positivos maiores que zero e um único
+número X inteiro, também positivo e maior que zero. Faça um programa para:
+(a) ler pelo teclado os valores do vetor;
+(b) ler pelo teclado o número X;
+(c) dizer quantos números no vetor são maiores que X, menores que X e iguais a X
+
+3 - Crie uma classe para representar uma conta-corrente, com métodos para depositar
+uma quantia, sacar uma quantia e obter o saldo. Para cada saque será debitada também uma
+taxa de operação equivalente à 0,5% do valor sacado. Para a criação de objetos dessa classe
+será possível (opcional) informar o valor do saldo da conta.
+
+4 - Verifique se as componentes de um vetor de 10 componentes lidos pelo teclado
+formam uma progressão aritmética, informando se sim ou se não.
+
+5 - O volume de uma piscina olímpica é de 1.890 metros cúbicos. Usando a classe
+ConversaoDeUnidadesDeVolume (exercício 5), escreva um programa em Java que mostre qual
+é o volume de uma piscina olímpica em litros, pés cúbicos e centímetros cúbicos. Escreva
+métodos adicionais para a classe ConversaoDeUnidadesDeVolume, se necessário.
+
+6 - Implemente a classe Funcionario com nome, salario e os métodos
+addAumento(double valor), ganhoAnual() e exibeDados() - imprime os valores do funcionário.
+a. crie a classe Assistente, que também é um funcionário, e que possui um número de
+matrícula (faça os métodos GET e SET). Sobrescreva o método exibeDados().
+b. sabendo que os Assistentes Técnicos possuem um bônus salarial e que os Assistentes
+Administrativos possuem um turno (dia ou noite) e um adicional noturno, crie as classes
+Tecnico e Administrativo e sobrescreva o método ganhoAnual() de ambas as classes
+(Administrativo e Tecnico).
+
+7 - Crie uma classe chamada Ingresso que possui um valor em reais e um
+método imprimeValor().
+a. crie uma classe VIP, que herda Ingresso e possui um valor adicional. Crie um método que
+retorne o valor do ingresso VIP (com o adicional incluído).
+b. crie uma classe Normal, que herda Ingresso e possui um método que imprime: "Ingresso
+Normal".
+c. crie uma classe CamaroteInferior (que possui a localização do ingresso e métodos para
+acessar e imprimir esta localização) e uma classe CamaroteSuperior, que é mais cara (possui
+valor adicional). Esta última possui um método para retornar o valor do ingresso. Ambas as
+classes herdam a classe VIP
+
+8 - Crie a classe Imovel, que possui um endereço e um preço.
+a. crie uma classe Novo, que herda Imovel e possui um adicional no preço. Crie métodos de
+acesso e impressão deste valor adicional.
+b. crie uma classe Velho, que herda Imovel e possui um desconto no preço. Crie métodos de
+acesso e impressão para este desconto.
+
+9 - Faça o que pede a questão.
+a) Crie um projeto interfaces e crie a interface AreaCalculavel com o método
+calculaArea() - sem parâmetros e que retorna um double.
+b) Queremos criar algumas classes que implementam AreaCalculavel:
+I. Quadrado: possui um atributo lado.
+II. Retangulo: possui os atributos base e altura.
+III. Circulo: possui o atributo raio.
+c) Crie uma classe de Teste. No método main crie um vetor de 5 posições que
+contém alguns objetos do tipo AreaCalculavel. Logo após, percorra esse vetor
+imprimindo a área de cada objeto.
+
+10 - Nosso banco precisa tributar dinheiro de alguns bens que nossos clientes
+possuem. Para isso, vamos criar um sistema para isso.
+a) Crie uma interface Tributavel que possui o método calculaTributos(), que
+retorna um double.
+b) Alguns bens são tributáveis e outros não, ContaPoupanca não é tributável, já
+para ContaCorrente você precisa pagar 1% da conta e o SeguroDeVida tem
+uma taxa fixa de 42 reais.
+c) As classes ContaCorrente e ContaPoupanca herdam de uma classe Conta. Essa
+classe Conta possui um saldo e os métodos sacar(double), depositar(double) e
+obterSaldo() que retorna o saldo da conta.
+d) Vamos criar uma classe TestaTributavel com um método main para testar o
+nosso exemplo.
+
+11 - Crie um GerenciadorDeImpostoDeRenda, que recebe todos os tributáveis de uma
+pessoa e soma seus valores e inclua nele um método para devolver seu total. Essa
+classe deve ter um atributo para calcular a soma total dos tributos e um método
+adicionar(Tributavel) que recebe como parâmetro um Tributavel e soma os
+tributos dele ao total. Crie um main para instanciar diversas classes que
+implementam Tributavel e passar como argumento para
+um GerenciadorDeImpostoDeRenda. Repare que você não pode passar qualquer
+tipo de conta para o método adiciona, apenas as que implementam Tributavel.
+
+12 - Identifique	as	classes	e implemente um	programa para a	seguinte especificação:	“O
+supermercado vende diferentes tipos	de produtos. Cada produto tem um preço e uma quantidade	em estoque.
+Um pedido de um	cliente	é composto de itens, onde cada item especifica o produto que o cliente deseja e a
+respectiva	quantidade.	Esse pedido	pode ser pago em dinheiro, cheque ou cartão.”
